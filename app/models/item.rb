@@ -4,4 +4,9 @@ class Item < ApplicationRecord
   belongs_to :genre
 
   has_one_attached :image
+
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :before_tax, presence: true
+  validates :image, presence: true
 end
