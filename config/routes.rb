@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get 'top' => 'homes#top', as: 'top'
   end
 
-
+  namespace :public do
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/check' => 'orders#check'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     root to: 'homes#top'
     get 'about' => 'homes#about', as: 'about'
-
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
