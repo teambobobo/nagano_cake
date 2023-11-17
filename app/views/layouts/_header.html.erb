@@ -1,46 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <% if admin_signed_in? %>
+    <%= link_to admin_root_path, class: "nav-link text-light" do %>
+     ながのCAKE
+    <% end %>
+  <% else %>
     <%= link_to root_path, class: "nav-link text-light" do %>
      ながのCAKE
     <% end %>
+  <% end %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <% if admin_signed_in? %>
-        <% if request.fullpath.include? "/admin" %>
-          <li class="nav-item">
-            <%= link_to '商品一覧', admin_items_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '会員一覧', admin_items_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '注文履歴一覧', admin_root_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to 'About', about_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '商品一覧', items_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to '新規登録', new_customer_registration_path, class: "nav-link text-light" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'ログイン', new_admin_session_path, class: 'nav-link text-light' %>
-          </li>
-        <% end %>
+        <li class="nav-item">
+          <%= link_to '商品一覧', admin_items_path, class: "nav-link text-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '会員一覧', admin_customers_path, class: "nav-link text-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '注文履歴一覧', admin_root_path, class: "nav-link text-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ジャンル一覧', admin_genres_path, class: "nav-link text-light" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+        </li>
       <% elsif customer_signed_in? %>
         <li class="nav-item">
           <%= link_to 'マイページ', customers_mypage_path, class: "nav-link text-light" %>
