@@ -13,10 +13,10 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
-    get 'top' => 'homes#top', as: 'top'
+    root to: 'homes#top'
   end
 
-  namespace :public do
+  scope module: :public do
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/check' => 'orders#check'
@@ -26,7 +26,9 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :customers, only: [:show, :edit, :update]
+    get 'customers/mypage', to: 'customers#show'
+    get 'customers/mypage/edit', to: 'customers#edit'
+    patch 'customers/mypage', to: 'customers#update'
     get 'customers/check' => 'customers#check'
     patch 'customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
