@@ -1,2 +1,32 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h1>マイページ</h1>
+<table>
+  <tbody>
+    <tr>
+      <td>氏名</td>
+      <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+      <td>カナ</td>
+      <td><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+    </tr>
+    <tr>
+      <td>郵便番号</td>
+      <td><%= @customer.post_cord %></td>
+    </tr>
+    <tr>
+      <td>住所</td>
+      <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+      <td>電話番号</td>
+      <td><%= @customer.phone_number %></td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td><%= @customer.email %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+
