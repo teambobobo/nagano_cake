@@ -1,12 +1,12 @@
 <div class='container'>
   <div class='row'>
     <div class="col-md-8 px-5 mx-auto">
-<!--商品詳細画面-->
+<!--管理者側／商品詳細画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-<!--！表示する画像のサイズがまだ決まっていない（新規登録時のサイズのまま表示される状態）-->
+<!--レイアウトがまだできてない-->
       <h2>商品詳細</h2>
       <div>
-        <%= image_tag @item.image %>
+        <%= image_tag @item.image, size: "300x200" %>
         <p>商品名：<%= @item.name %></p>
         <p>商品説明：<%= @item.introduction %></p>
         <p>ジャンル：<%= @item.genre.name %></p>
