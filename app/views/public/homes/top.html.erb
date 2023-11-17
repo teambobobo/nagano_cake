@@ -8,9 +8,22 @@
     </div>
   </div>
   
+  
   <div class="row">
     <div class="mx-auto">
       <h3>新着商品</h3>
+      <!-- render 'admin/items/new_arrivals',new_items: @new_items %>
+<!--以下itemで部分テンプレートにする-->
+<div class="new-items">
+  <% new_items.each do |item| %>
+    <div class="item">
+      <%= image_tag(item.image_url, alt: item.name) %>
+      <h2><%= item.name %></h2>
+      <p>金額: <%= number_to_currency(item.price) %></p>
+    </div>
+  <% end %>
+</div>
+<!--ここまで-->
     </div>
   </div>
 
