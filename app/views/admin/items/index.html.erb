@@ -1,2 +1,34 @@
-<h1>Admin::Items#index</h1>
-<p>Find me in app/views/admin/items/index.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-8 px-5 mx-auto">
+<!--管理者側／商品一覧画面-->
+<!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
+    <h2>商品一覧</h2>
+<!--！ワイヤーフレームの新規登録ボタンと見た目が違う-->
+    <%= link_to "新規登録", new_admin_item_path, class: "btn btn-sm btn-success" %>
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+          <th>商品ID</th>
+          <th>商品名</th>
+          <th>税抜価格</th>
+          <th>ジャンル</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.id %></td>
+          <td><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td><%= item.before_tax.to_s(:delimited) %></td>
+          <td><%= item.genre.name %></td>
+          <td><%= item.sale_status(item) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @items %>
+    </div>
+  </div>
+</div>
