@@ -24,4 +24,18 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  private
+
+  def customer_state
+    customer = Customer.find_by(email: params[:customer][:email])
+    return if customer.nil?
+    return unless customer.valid_password?(params[:customer][:password])
+    alert_message = if customer.status == 'withdraw'
+                      'You have already resigned'
+                    else
+                      'Your account is suspended'
+                    end
+    redirect_to new_customer_registration_path, alert: alert_message
+  end
 end

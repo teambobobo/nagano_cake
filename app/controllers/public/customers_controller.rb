@@ -14,7 +14,13 @@ class Public::CustomersController < ApplicationController
   def update
     customer = current_customer
     customer.update(customer_params)
-    redirect_to customers_mypage_path
+    redirect_to customers_mypage_paths
+  end
+
+  def withdraw
+    current_customer.update(status: 'withdrawn')
+    reset_session
+    redirect_to root_path, notice: 'Successfully withdraw from Ecommerce'
   end
 
   private
