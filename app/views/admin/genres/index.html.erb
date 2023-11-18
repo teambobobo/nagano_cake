@@ -1,7 +1,18 @@
 <h3>ジャンル一覧・追加</h3>
 
+<!--ジャンル登録・更新成功のアラートメッセージ-->
+<% if flash[:notice] %>
+  <div class="alert alert-success">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <!--ジャンル追加機能-->
 <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
+  <!--登録失敗のメッセージ-->
+  <% if @genre.errors.any? %>
+    <div class="alert alert-danger" role="alert">ジャンル名を入力してください</div>
+  <% end %>
   <table>
     <tbody>
       <tr>
