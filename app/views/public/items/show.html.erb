@@ -1,2 +1,17 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class="col-md-8 px-5 mx-auto">
+<!--顧客側／商品詳細画面-->
+<!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
+<!--！レイアウトができてない-->
+      <h2>商品詳細</h2>
+      <div>
+        <%= image_tag @item.image, size: "300x200" %>
+        <h4><strong><%= @item.name %></strong></h4>
+        <p><%= @item.introduction %></p>
+        <p>￥<%= @item.after_tax.to_s(:delimited) %>（税込）</p>
+      </div>
+
+    </div>
+  </div>
+</div>
