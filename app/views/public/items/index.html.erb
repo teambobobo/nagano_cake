@@ -11,7 +11,7 @@
       <tbody>
       <% @items.each do |item| %>
       <tr>
-        <td><%= image_tag item.image, size: "180x120" %></td>
+        <!--<td><%#= image_tag item.image, size: "180x120" %></td>-->
         <td><%= link_to item.name, item_path(item.id) %></td>
         <td>￥<%= item.after_tax.to_s(:delimited) %></td>
       </tr>
