@@ -16,6 +16,7 @@ class Customer < ApplicationRecord
   validates :address, presence: true
 
   def active_for_authentication?
-    super && (is_active == 'true')
+    super && (is_active == true)
   end
+
 end
