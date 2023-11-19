@@ -5,7 +5,7 @@
     <td><%= link_to "編集する", customers_mypage_edit_path, class:"btn btn-success" %></td>
   </tr>
 </table>
-<table>
+<table class="table table-bordered">
   <tbody>
     <tr>
       <td>氏名</td>
@@ -32,6 +32,17 @@
       <td><%= @customer.email %></td>
     </tr>
   </tbody>
+</table>
+
+<table>
+  <tr>
+    <td>配送先</td>
+    <td><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></td>
+  </tr>
+  <tr>
+    <td>注文履歴</td>
+    <td><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
+  </tr>
 </table>
 
 
