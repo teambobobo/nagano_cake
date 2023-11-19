@@ -1,8 +1,8 @@
 <h2>注文履歴詳細</h2>
 <!--管理者側／注文履歴詳細画面-->
 
-<%= form_with model: Order, url: admin_order_path, method: :patch do |f| %>
-<p><%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %></p>
+<%#= form_with model: Order, url: admin_order_path, method: :patch do |f| %>
+<%#= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
    <%#= f.hidden_field :item_id, :value => @item.id %>
-<p><%= f.submit "カートに入れる" %></p>
-<% end %>
+<%#= f.submit "カートに入れる" %>
+<%# end %>
