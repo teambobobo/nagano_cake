@@ -82,9 +82,9 @@ ActiveRecord::Schema.define(version: 2023_11_19_014930) do
     t.string "kana_last_name", null: false
     t.string "kana_first_name", null: false
     t.string "phone_number", null: false
+    t.boolean "is_active", default: true, null: false
     t.string "post_cord", null: false
     t.string "address", null: false
-    t.boolean "is_active", default: true, null: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
