@@ -14,7 +14,7 @@ class Public::CustomersController < ApplicationController
   def update
     customer = current_customer
     customer.update(customer_params)
-    redirect_to customers_mypage_paths
+    redirect_to customers_mypage_path
   end
 
   def withdraw

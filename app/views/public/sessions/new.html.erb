@@ -1,21 +1,26 @@
-<h2>ログイン</h2>
-<h4>会員の方はこちらからログイン</h4>
-
-<%= form_with model: @customer, url: customer_session_path do |f| %>
-<table>
-  <tr>
-    <td><%= f.label :メールアドレス %></td>
-    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
-  </tr>
-  <tr>
-    <td><%= f.label :パスワード %></td>
-    <td><%= f.password_field :password, autocomplete: "current-password" %></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><%= f.submit "Log in", class: "btn btn-primary" %></td>
-  </tr>
-</table>
-<% end %>
+<div class="container mt-5">
+  <div class="row mx-auto">
+    <div class="col-md-6 offset-3">
+      <h2>ログイン</h2>
+      <h4>会員の方はこちらからログイン</h4>
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
+      <table>
+        <tr>
+          <td><%= f.label :メールアドレス %></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :パスワード %></td>
+          <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "Log in", class: "btn btn-primary" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= render "public/shared/links" %>
