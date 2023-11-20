@@ -22,7 +22,7 @@
       <p><%= @customer.email %></p>
       <p class="<%= @customer.is_active ? 'text-success' : 'text-muted' %>"><%= @customer.is_active ? '有効' : '退会' %></p>
       <%= link_to "編集する ", edit_admin_customer_path(@customer),class: "btn btn-sm btn-success"%>
-      <button type="button" class="btn-sm btn-primary">注文履歴一覧を見る</button>
+      <%= link_to "注文履歴一覧を見る ", orders_path,class: "btn btn-sm btn-info"%>
     </div>
     
   </div>
