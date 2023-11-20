@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
+  before_action :authenticate_admin!
   def index
-    @customers=Customer.all
+    @customers=Customer.page(params[:page])
   end
 
   def show
@@ -13,10 +14,12 @@ class Admin::CustomersController < ApplicationController
   
   def update
     @customer=Customer.find(params[:id])
+    puts params[:id]
     if @customer.update(customer_params)
       flash[:notice] ="更新成功"
       redirect_to admin_customer_path(@customer)
     else
+       @customer=Customer.find(params[:id])
       render :edit
     end
   end
@@ -31,7 +34,8 @@ class Admin::CustomersController < ApplicationController
                                      :phone_number,
                                      :post_cord,
                                      :address,
-                                     :email)
+                                     :email,
+                                     :is_active)
   end
   
 end

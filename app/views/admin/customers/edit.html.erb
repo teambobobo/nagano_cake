@@ -1,6 +1,14 @@
 <div class="container px-5 px-sm-0">
   <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</h3>
-  <%= form_with model: @customer, url: '/admin/customers/@customers_id/edit', method: :get do |f| %>
+  <% if @customer.errors.any? %>
+      <%= @customer.errors.count %>error prohibited this obj from being saved:
+      <ul>
+       <% @customer.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+      </ul>
+      <% end %>
+  <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
     <div class="row">
       <div class="col-md-3">
         <p>会員ID</p>
