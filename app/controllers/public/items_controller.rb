@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(10).order(:id)
+    @items = Item.where(is_sale: true).page(params[:page]).per(10).order(:id)
   end
 
   def show

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :index, :edit, :update]
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     root to: 'homes#top'
+    patch 'order_details/:id' => 'order_details#update', as: 'order_details'
   end
 
   scope module: :public do
