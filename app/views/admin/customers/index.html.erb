@@ -22,6 +22,7 @@
         <td class="<%= customer.is_active ? 'text-success' : 'text-muted' %>"><%= customer.is_active ? '有効' : '退会' %></td>
       </tr>
       <% end %>
-      <%= paginate @customers %>
+      
       </tbody>
   </table>
+  <%= paginate @customers %>

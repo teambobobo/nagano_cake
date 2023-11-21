@@ -11,20 +11,25 @@
           <th>注文ステータス</th>
         </tr>
         <% @order.each do |order| %>
+        <% @total_amount = 0 %>
         <tr>
-          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+          <td><%= order.created_at.strftime("%Y/%m/%d %H:%M:%S") %></td>
           <td><%= order.address_name %></td>
           <td>
             <% order.order_details.each do |order_details| %>
-              <%= order_details.amount  %>
+              <% @total_amount += order_details.amount  %>
             <% end %>
+            <%= @total_amount %>
           </td>
           <td><%= order.status_i18n %></td>
         </tr>
         <% end %>
       </table>
+       <div class="center-block"><%= paginate @order %></div>
     </div>
   </div>
 </div>
+
+
 
 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
