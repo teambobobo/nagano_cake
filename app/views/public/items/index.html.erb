@@ -1,23 +1,21 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-md-8 px-5 mx-auto">
+    <div class="col-md-8 mx-auto">
 <!--顧客側／商品一覧画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-    <h2>商品一覧（全<%= Item.all.count %>件）</h2>
+    <h2>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h2>
 
 <!--！レイアウトがテーブルのまま-->
 <!--販売中の商品のみ表示させるのか？-->
-    <table class='table table-hover table-inverse'>
-      <tbody>
+      <div class='row row-cols-4'>
       <% @items.each do |item| %>
-      <tr>
-        <!--<td><%#= image_tag item.image, size: "180x120" %></td>-->
-        <td><%= link_to item.name, item_path(item.id) %></td>
-        <td>￥<%= item.after_tax.to_s(:delimited) %></td>
-      </tr>
+      <div class="item">
+        <%#= image_tag item.image, size: "180x120" %>
+        <p><%= link_to item.name, item_path(item.id) %></p>
+        <p>￥<%= item.after_tax.to_s(:delimited) %></p>
+      </div>
       <% end %>
-      </tbody>
-    </table>
+      </div>
     <%= paginate @items %>
     </div>
   </div>

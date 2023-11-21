@@ -23,7 +23,11 @@
           <td><%= link_to item.name, admin_item_path(item.id) %></td>
           <td><%= item.before_tax.to_s(:delimited) %></td>
           <td><%= item.genre.name %></td>
-          <td><%= item.sale_status(item) %></td>
+          <% if item.is_sale %>
+          <td class="text-success"><strong>販売中</strong></p>
+          <% else %>
+          <td class="text-muted"><strong>販売停止</strong></p>
+          <% end %>
         </tr>
         <% end %>
       </tbody>
