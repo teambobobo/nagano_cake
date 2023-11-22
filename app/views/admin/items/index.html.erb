@@ -1,17 +1,18 @@
 <div class='container'>
-  <div class='row'>
-    <div class="col-md-8 px-5 mx-auto">
+  <div class='row mx-auto'>
+    <div class="col-md-8 ">
 <!--管理者側／商品一覧画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-    <h2>商品一覧</h2>
+    <h3>商品一覧</h3>
+
 <!--！ワイヤーフレームの新規登録ボタンと見た目が違う-->
     <!--商品登録・更新成功のアラートメッセージ-->
-<% if flash[:notice] %>
-  <div class="alert alert-success">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
-    <%= link_to "新規登録", new_admin_item_path, class: "btn btn-sm btn-success" %>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <table class='table table-hover table-inverse'>
       <thead>
         <tr>
@@ -39,6 +40,9 @@
       </tbody>
     </table>
     <%= paginate @items %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "新規登録", new_admin_item_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>
 </div>

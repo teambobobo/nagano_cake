@@ -1,17 +1,14 @@
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <!--新規登録失敗時のアラートメッセージ-->
+      <% if @item.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @item.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
 <!--管理者側／商品新規登録画面-->
 <!--！新規登録時、登録できる画像のサイズがまだ決まってない（好きなサイズで登録できる状態）-->
     <h2>商品新規登録</h2>

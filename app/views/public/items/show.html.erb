@@ -6,14 +6,14 @@
 <!--！レイアウトができてない-->
       <h2>商品詳細</h2>
       <div>
-        <%#= image_tag @item.image, size: "300x200" %>
+        <%= image_tag @item.image, size: "300x200" %>
         <h4><strong><%= @item.name %></strong></h4>
         <p><%= @item.introduction %></p>
         <p>￥<%= @item.after_tax.to_s(:delimited) %>（税込）</p>
         <%= form_with model: CartItem, url: cart_items_path, method: :post do |f| %>
         <p><%= f.select :amount, *[1..100] %></p>
            <%= f.hidden_field :item_id, :value => @item.id %>
-        <p><%= f.submit "カートに入れる" %></p>
+        <p><%= f.submit "カートに入れる", class: "btn btn-success" %></p>
         <% end %>
       </div>
 
