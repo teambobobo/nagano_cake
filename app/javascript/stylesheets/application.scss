@@ -1,1 +1,16 @@
-@use '~bootstrap/scss/bootstrap';
+$primary: #b7ffff;
+$secondary: #ffdbb7;
+$success: #c1ffc1;
+$Danger: #ffb7b7;
+$Warning: #ffffb7;
+$Info: #c1c1ff;
+$Light: #ccffe5;
+$Dark: #a8a8ff;
+$Link: #dbb7ff;
+
+
+@import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #ffffef;
+}
