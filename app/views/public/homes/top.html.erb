@@ -17,8 +17,8 @@
   <div class="row row-cols-4">
     <% @new_items.each do |item| %>
       <div class="new-items">
-        <%#= image_tag(item.image_url, alt: item.name) %>
-        <p><%= item.name %></p>
+        <%#= image_tag item.image, size: '250x150' %>
+        <p><%= link_to item.name, item_path(item.id) %></p>
         <p>金額: <%= item.before_tax %></p>
       </div>
     <% end %>
