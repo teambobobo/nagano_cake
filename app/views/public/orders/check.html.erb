@@ -71,7 +71,7 @@
         </tr>
       </table>
 
-      <div class="form mt-3 mx-auto">
+      <div class="form mt-3 mx-auto text-center">
         <%= form_with model: @order, url: orders_path, method: :post do |f| %>
           <%= f.hidden_field :payment_method, :value => @payment_method %>
           <%= f.hidden_field :address_name, :value => @order.address_name %>
