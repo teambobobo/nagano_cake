@@ -1,11 +1,9 @@
 <% if @item.errors.any? %>
   <div id="error_explanation">
-    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <!--<h3><%#= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>-->
+    <% @item.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
       <% end %>
-    </ul>
   </div>
 <% end %>
 
