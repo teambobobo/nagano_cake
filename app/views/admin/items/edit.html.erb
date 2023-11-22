@@ -1,16 +1,16 @@
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <!--<h3><%#= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>-->
-    <% @item.errors.full_messages.each do |message| %>
-        <p><%= message %></p>
-      <% end %>
-  </div>
-<% end %>
 
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-<!--管理者側／商品編集画面-->
+      <!--編集失敗時のアラートメッセージ-->
+      <% if @item.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @item.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+    <!--管理者側／商品編集画面-->
     <h2>商品編集</h2>
 
     <%= form_with model: @item, url: admin_item_path(@item), local: true do |f| %>
