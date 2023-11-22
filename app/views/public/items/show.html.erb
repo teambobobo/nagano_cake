@@ -1,22 +1,32 @@
-<div class='container'>
+<div class='container px-5 py-5'>
   <div class='row'>
-    <div class="col-md-8 px-5 mx-auto">
 <!--顧客側／商品詳細画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-<!--！レイアウトができてない-->
-      <h2>商品詳細</h2>
-      <div>
-        <%= image_tag @item.image, size: "300x200" %>
-        <h4><strong><%= @item.name %></strong></h4>
-        <p><%= @item.introduction %></p>
-        <p>￥<%= @item.after_tax.to_s(:delimited) %>（税込）</p>
-        <%= form_with model: CartItem, url: cart_items_path, method: :post do |f| %>
-        <p><%= f.select :amount, *[1..100] %></p>
-           <%= f.hidden_field :item_id, :value => @item.id %>
-        <p><%= f.submit "カートに入れる", class: "btn btn-success" %></p>
-        <% end %>
+    <div class="col-md-5 ml-5">
+      <div class="my-5">
+        <%= image_tag @item.image, size: "360x240" %>
       </div>
-
     </div>
+    <div class="col-md-6" style="margin-top: 50px;">
+      <h4 style="letter-spacing: 1px">
+        <strong><%= @item.name %></strong>
+      </h4>
+      <p style="font-size: 19px; margin-top: 10px;">
+        <%= @item.introduction %>
+      </p>
+      <p>
+        <strong style="font-size: 25px;">
+          ￥<%= @item.after_tax.to_s(:delimited) %>
+        </strong>
+        （税込）
+      </p>
+      <%= form_with model: CartItem, url: cart_items_path, method: :post, html: { class: "form-inline" } do |f| %>
+        <%= f.select :amount, *[1..100], {}, class: "form-control mr-5" %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
+
+
   </div>
 </div>

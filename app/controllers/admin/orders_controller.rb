@@ -11,7 +11,7 @@ class Admin::OrdersController < ApplicationController
     if @order.update(order_params)
       @order_details.update_all(status: "wait_production") if @order.status == "confirm_payment"
     end
-    redirect_to admin_order_path(@order.id)
+    redirect_to admin_order_path(@order.id), notice: "注文ステータスを更新しました"
   end
 
   private

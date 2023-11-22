@@ -1,48 +1,53 @@
 <div class='container'>
-  <div class='row mx-auto'>
-    <div class="col-md-8 ">
+  <div class='row mt-3'>
+    <div class="col-md-9 ml-auto">
 <!--管理者側／商品一覧画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-    <h3>商品一覧</h3>
-
-<!--！ワイヤーフレームの新規登録ボタンと見た目が違う-->
-    <!--商品登録・更新成功のアラートメッセージ-->
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr>
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @items.each do |item| %>
-        <tr>
-          <td><%= item.id %></td>
-          <td><%= link_to item.name, admin_item_path(item.id) %></td>
-          <td><%= item.before_tax.to_s(:delimited) %></td>
-          <td><%= item.genre.name %></td>
-          <% if item.is_sale %>
-          <td class="text-success"><strong>販売中</strong></p>
-          <% else %>
-          <td class="text-muted"><strong>販売停止</strong></p>
-          <% end %>
-        </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate @items %>
+      <h3>商品一覧</h3>
     </div>
     <div class="col-md-2">
-      <%= link_to "新規登録", new_admin_item_path, class: "btn btn-sm btn-success" %>
+      <%= link_to new_admin_item_path do %>
+        <i class="fa-solid fa-circle-plus fa-2x" style="filter:drop-shadow(3px 3px 1px #bbb);"></i>
+      <% end %>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class="col-md-10 mx-auto">
+      <!--商品登録・更新成功のアラートメッセージ-->
+      <% if flash[:notice] %>
+        <div class="alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @items.each do |item| %>
+          <tr>
+            <td><%= item.id %></td>
+            <td><%= link_to item.name.truncate(20), admin_item_path(item.id) %></td>
+            <td><%= item.before_tax.to_s(:delimited) %></td>
+            <td><%= item.genre.name %></td>
+            <% if item.is_sale %>
+            <td class="text-success"><strong>販売中</strong></td>
+            <% else %>
+            <td class="text-muted"><strong>販売停止</strong></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @items %>
     </div>
   </div>
 </div>
