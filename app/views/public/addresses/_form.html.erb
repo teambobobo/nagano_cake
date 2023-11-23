@@ -1,20 +1,21 @@
 <%= form_with model: address do |f| %>
+   <table>
       <div>
-        <label>郵便番号(ハイフンなし)</label>
-        <%= f.text_field :post_cord %>
+        <label>郵便番号（ハイフンなし）</label>
+        &emsp;&emsp;<%= f.text_field :post_cord %>
       </div>
       <div>
         <label>住所</label>
-        <%= f.text_field :address %>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.text_field :address, size: "50" %>
       </div>
       <div>
         <label>宛名</label>
-        <%= f.text_field :name %>
-      </div>
-      <% if f.object.new_record? %>
-        <%= f.submit "新規登録", class: 'btn btn-success' %>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.text_field :name %>
+        <% if f.object.new_record? %>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.submit "新規登録", class: 'btn btn-success' %>
       <% else %>
-        <%= f.submit "変更内容を保存", class: 'btn btn-success' %>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<%= f.submit "変更内容を保存", class: 'btn btn-success' %>
       <% end %>
-
+      </div>
+      </table>
 <% end %>
