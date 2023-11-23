@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row mt-3">
-    <div class="col-md-12">
+    <div class="col-md-8 offset-2">
 
       <h3 class="mb-3">注文情報入力</h3>
       <%= form_with model: @order, url: orders_check_path, method: :post do |f| %>
@@ -31,7 +31,7 @@
           </tr>
           <tr>
             <td>&emsp;&emsp;住所</td>
-            <td><%= f.text_field :address %></td>
+            <td><%= f.text_field :address, size: "50" %></td>
           </tr>
           <tr>
             <td>&emsp;&emsp;宛名</td>
@@ -40,8 +40,9 @@
         </table>
 
         <br>
-        <%= f.submit "確認画面へ進む", class:"btn btn-primary"%>
-
+        <div class="text-center">
+          <%= f.submit "確認画面へ進む", class:"btn btn-primary"%>
+        </div>
       <% end %>
 
     </div>
