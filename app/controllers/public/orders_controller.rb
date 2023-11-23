@@ -1,4 +1,6 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @order = Order.new
     #@customer_address = current_customer.post_code + current_customer.address + current_customer.current_last_name + customer.frist_name
