@@ -6,11 +6,11 @@
       <strong>注文情報</strong>
       <table class="table-bordered my-2", style="border: solid 2px black;">
           <tr height="50">
-            <td class="table-secondary">注文日</td>
+            <td class="table-active">注文日</td>
             <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
           </tr>
           <tr height="50">
-            <td width="125" class="table-secondary">配送先</td>
+            <td width="125" class="table-active">配送先</td>
             <td width="500">
              〒<%= @order.post_code %><br>
               <%= @order.address %><br>
@@ -18,11 +18,11 @@
             </td>
           </tr>
            <tr height="50">
-            <td class="table-secondary">支払方法</td>
+            <td class="table-active">支払方法</td>
             <td><%= @order.payment_method_i18n %></td>
           </tr>
            <tr height="50">
-            <td class="table-secondary">ステータス</td>
+            <td class="table-active">ステータス</td>
             <td><%= @order.status_i18n %></td>
         </tr>
       </table>
@@ -32,15 +32,15 @@
       <strong>請求情報</strong>
       <table class="table-bordered mt-2", style="border: solid 2px black;">
         <tr height="50">
-          <td width="150" class="table-secondary">商品合計</td>
+          <td width="150" class="table-active">商品合計</td>
           <td width="150">¥<%= (@order.total_price - @postage).to_s(:delimited) %></td>
         </tr>
         <tr height="50">
-          <td class="table-secondary">配送料</td>
+          <td class="table-active">配送料</td>
           <td>¥<%= @postage.to_s(:delimited) %></td>
         </tr>
         <tr height="50">
-          <td class="table-secondary"><strong>ご請求額</strong></td>
+          <td class="table-active"><strong>ご請求額</strong></td>
           <td>¥<%= @order.total_price.to_s(:delimited) %></td>
         </tr>
       </table>
@@ -49,7 +49,7 @@
 
   <strong>注文内容</strong>
   <table class="table-bordered mt-2", style="border: solid 2px black;">
-    <thead height="50" class="table-secondary">
+    <thead height="50" class="table-active">
       <tr>
         <th width="500">商品名</th>
         <th width="100">単価(税込)</th>
