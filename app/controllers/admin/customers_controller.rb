@@ -14,12 +14,10 @@ class Admin::CustomersController < ApplicationController
   
   def update
     @customer=Customer.find(params[:id])
-    puts params[:id]
     if @customer.update(customer_params)
-      flash[:notice] ="更新成功"
+      flash[:admin_customer] ="更新成功"
       redirect_to admin_customer_path(@customer)
     else
-       @customer=Customer.find(params[:id])
       render :edit
     end
   end

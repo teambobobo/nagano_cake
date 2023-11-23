@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 mt-3">
-      <h3>注文履歴一覧</h3>
+      <h6>注文履歴一覧</h6>
 
       <table class="table table-hover table-inverse">
         <tr>
@@ -30,6 +30,3 @@
   </div>
 </div>
 <div class="center-block text-center"><%= paginate @order %></div>
-
-
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

@@ -1,6 +1,10 @@
 <div class="container px-5 px-sm-0">
   <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
-  <%= flash[:notice]%>
+  <% if flash[:admin_customer] %>
+        <div class="alert alert-success">
+          <%= flash[:admin_customer] %>
+        </div>
+        <% end %>
   <div class="row">
     <div class="col-md-3">
       <p>会員ID</p>
