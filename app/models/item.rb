@@ -23,4 +23,10 @@ class Item < ApplicationRecord
   def after_tax
     (self.before_tax * 1.10).round
   end
+
+  def self.looks(search, word)
+    if search == "partial_match"
+      @item = Item.where("name LIKE?", "%#{word}%")
+    end
+  end
 end

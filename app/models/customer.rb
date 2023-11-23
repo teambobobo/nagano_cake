@@ -19,4 +19,9 @@ class Customer < ApplicationRecord
     super && (is_active == true)
   end
 
+  def self.looks(search, word)
+    if search == "partial_match"
+      @customer = Customer.where("first_name LIKE? OR last_name LIKE?", "%#{word}%", "%#{word}%")
+    end
+  end
 end

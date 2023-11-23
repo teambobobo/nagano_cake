@@ -1,6 +1,9 @@
-<div class='container'>
+<div class='container-fluid py-5'>
   <div class='row'>
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-2 offset-md-1">
+      <%= render "searches/genre_search", genres: @genres %>
+    </div>
+    <div class="col-md-8">
 <!--顧客側／商品一覧画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
     <h2>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h2>
@@ -8,8 +11,10 @@
       <div class='row row-cols-4'>
         <% @items.each do |item| %>
         <div class="item">
-          <%= image_tag item.image, size: "180x120" %>
-          <p><%= link_to item.name.truncate(20), item_path(item.id) %></p>
+          <%= link_to item_path(item.id) do%>
+            <%= image_tag item.image, size: "200x140" %>
+          <% end %>
+          <p style="width:80%;"><%= link_to item.name.truncate(20), item_path(item.id) %></p>
           <p>￥<%= item.after_tax.to_s(:delimited) %></p>
         </div>
         <% end %>
