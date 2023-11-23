@@ -1,16 +1,46 @@
-$primary: #b7ffff;
-$secondary: #ffdbb7;
-$success: #c1ffc1;
-$Danger: #ffb7b7;
-$Warning: #ffffb7;
-$Info: #c1c1ff;
-$Light: #ccffe5;
-$Dark: #a8a8ff;
-$Link: #dbb7ff;
-
+$primary: #0073a8;
+$secondary: #d4d9df;
+$success: #2cb4ad; //ナイルブルー
+$danger: #b33e5c; //ワインレッド
+$warning: #ffffb7;
+$info: #c1c1ff;
+$light: #a22041; //濃い紅
+$dark: #a8a8ff;
+//$Link: #a22041;
 
 @import '~bootstrap/scss/bootstrap';
 
 body {
   background-color: #ffffef;
+}
+
+a {
+  color: #a22041; //濃い紅
+}
+
+a:hover {
+  color: #a22041; //濃い紅
+}
+
+.main {
+  color: #4e454a; //チャコールグレー
+}
+
+.footer {
+  color: #4e454a; //チャコールグレー
+}
+
+.top {
+  opacity: 0.5;
+  position: relative;
+}
+
+.top-content {
+  position: absolute;
+  top: 330px;
+  left: 50%;
+  color: #4e454a;
+  transform: translate(-50%,-50%);
+  line-height: 50px;
+  font-size: 20px;
 }

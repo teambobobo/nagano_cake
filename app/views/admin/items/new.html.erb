@@ -1,20 +1,17 @@
-<% if @item.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@item.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <!--新規登録失敗時のアラートメッセージ-->
+      <% if @item.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @item.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
 <!--管理者側／商品新規登録画面-->
 <!--！新規登録時、登録できる画像のサイズがまだ決まってない（好きなサイズで登録できる状態）-->
-    <h2>商品新規登録</h2>
+    <h3>商品新規登録</h3>
 
     <%= form_with model: @item, url: admin_items_path, local: true do |f| %>
       <div class="form-group">
@@ -39,18 +36,23 @@
 
       <div class="form-group">
         <%= f.label :before_tax, "税抜価格" %>
-        <%= f.number_field :before_tax, placeholder: "1000", class: 'form-control' %>円
+        <div class="input-group">
+          <%= f.number_field :before_tax, placeholder: "1000", class: 'form-control' %>
+          <div class="input-group-append">
+            <span class="input-group-text">円
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
-        <%= f.label :is_sale, "販売ステータス" %>
+        <%= f.label :is_sale, "販売ステータス" %>&emsp;
         <%= f.radio_button :is_sale, true %>
-        <%= f.label :is_sale, "販売中", {value: :true, style: "display: inline-block;"} %>
+        <%= f.label :is_sale, "販売中", {value: :true, style: "display: inline-block;"} %>&emsp;
         <%= f.radio_button :is_sale, false %>
         <%= f.label :is_sale, "販売停止中", {value: :false, style: "display: inline-block;"} %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group text-center">
         <%= f.submit "新規登録", class: 'btn btn-success' %>
       </div>
     <% end %>
