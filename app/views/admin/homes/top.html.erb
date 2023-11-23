@@ -14,7 +14,7 @@
         <% @total_amount = 0 %>
         <tr>
           <td><%=link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id)  %></td>
-          <td><%= order.address_name %></td>
+          <td><%= order.customer.last_name+order.customer.first_name %></td>
           <td>
             <% order.order_details.each do |order_details| %>
               <% @total_amount += order_details.amount  %>
