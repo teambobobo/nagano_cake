@@ -4,13 +4,6 @@
       <h3>注文履歴詳細</h3>
       <!--管理者側／注文履歴詳細画面-->
 
-      <!--商品登録・更新成功のアラートメッセージ-->
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-
       <table style="border-spacing: 15px 15px; border-collapse: separate ;">
         <tr>
           <td><strong>購入者</strong></td>
@@ -57,7 +50,7 @@
         <% @order.order_details.each do |order_details| %>
         <tr>
           <td><%= order_details.item.name %></td>
-          <td>¥<%= order_details.item.after_tax.to_s(:delimited) %></td>
+          <td>¥<%= order_details.after_tax.to_s(:delimited) %></td>
           <td><%= order_details.amount %></td>
           <td>¥<%= (order_details.amount * order_details.after_tax).to_s(:delimited) %></td>
           <td>

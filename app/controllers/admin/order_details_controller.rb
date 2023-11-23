@@ -14,7 +14,7 @@ class Admin::OrderDetailsController < ApplicationController
        end
        order.update(status: "prepare_ship") if is_updated
     end
-    redirect_to admin_order_path(order.id), notice: "製作ステータスを更新しました"
+    redirect_to admin_order_path(order.id)
   end
 
   private
