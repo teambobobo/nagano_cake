@@ -1,12 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12 mt-3">
-      
-      <% flash.each do |type, message| %>
-       <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}") %>
-      <% end %>
-      
-      <h3>注文履歴一覧</h3>
+      <h6>注文履歴一覧</h6>
 
       <table class="table table-hover table-inverse">
         <tr>
@@ -19,7 +14,13 @@
         <% @total_amount = 0 %>
         <tr>
           <td><%=link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id)  %></td>
+        </tr>
+        <% @order.each do |order| %>
+        <% @total_amount = 0 %>
+        <tr>
+          <td><%=link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id)  %></td>
           <td><%= order.address_name %></td>
+          <td><%= order.customer.last_name+order.customer.first_name %></td>
           <td>
             <% order.order_details.each do |order_details| %>
               <% @total_amount += order_details.amount  %>
@@ -35,6 +36,3 @@
   </div>
 </div>
 <div class="center-block text-center"><%= paginate @order %></div>
-
-
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
