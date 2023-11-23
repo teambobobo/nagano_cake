@@ -5,18 +5,16 @@
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
     <h2>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h2>
 
-<!--！レイアウトがテーブルのまま-->
-<!--販売中の商品のみ表示させるのか？-->
       <div class='row row-cols-4'>
-      <% @items.each do |item| %>
-      <div class="item">
-        <%#= image_tag item.image, size: "180x120" %>
-        <p><%= link_to item.name, item_path(item.id) %></p>
-        <p>￥<%= item.after_tax.to_s(:delimited) %></p>
+        <% @items.each do |item| %>
+        <div class="item">
+          <%= image_tag item.image, size: "180x120" %>
+          <p><%= link_to item.name.truncate(20), item_path(item.id) %></p>
+          <p>￥<%= item.after_tax.to_s(:delimited) %></p>
+        </div>
+        <% end %>
       </div>
-      <% end %>
-      </div>
-    <%= paginate @items %>
+      <%= paginate @items %>
     </div>
   </div>
 </div>

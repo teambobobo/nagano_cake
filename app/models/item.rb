@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :before_tax, presence: true
-  # validates :image, presence: true
+  validates :image, presence: true
 
 # このメソッドがないと販売ステータスが日本語ではなくtrue, falseと表示される。
   def sale_status(item)
