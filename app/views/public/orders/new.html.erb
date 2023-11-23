@@ -15,7 +15,8 @@
         <h5><strong>お届け先</strong></h5>
         &emsp;<%= f.radio_button :address_option, 1 %>
         <%= f.label :address_option, "ご自身の住所" %><br>
-        &emsp;&emsp;<%= '〒' + current_customer.post_cord + ' ' + current_customer.address + ' ' + current_customer.last_name + current_customer.first_name %>
+        &emsp;&emsp;<%= '〒' + current_customer.post_cord + ' ' + current_customer.address %> <br>
+        &emsp;&emsp;<%= current_customer.last_name + current_customer.first_name %>
         <br>
         &emsp;<%= f.radio_button :address_option, 2 %>
         <%= f.label :address_option, "登録済み住所から選択" %><br>
