@@ -6,7 +6,7 @@
     <div class="col-md-8">
 <!--顧客側／商品一覧画面-->
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-    <h2>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h2>
+    <h3>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h3>
 
       <div class='row row-cols-4'>
         <% @items.each do |item| %>
