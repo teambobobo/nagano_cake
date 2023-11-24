@@ -1,9 +1,9 @@
-<div class="container px-5 px-sm-0">
+<div class="container px-5 px-sm-0 py-5">
   <div class="row">
     <div class="col-md-8">
-      <h1>会員一覧</h1>
-      <table class="table table-hover table-inverse">
-      <thead>
+      <h4 style="margin-left: 225px;">会員一覧</h4>
+      <table class="table table-hover table-inverse " style="margin-left: 225px;">
+      <thead class="table-active">
         <tr>
         <th>会員ID</th>
         <th>氏名</th>
@@ -16,17 +16,21 @@
       <tr>
         <td><%=customer.id%></td>
         <td>
-          <%=link_to customer.last_name,admin_customer_path(customer) %><%=link_to customer.first_name,admin_customer_path(customer) %>
+          <%=link_to admin_customer_path(customer) do %>
+            <%=customer.last_name + customer.first_name%>
+          <% end %>
         </td>
         <td><%=customer.email %></td>
         <td class="<%= customer.is_active ? 'text-success' : 'text-muted' %>"><%= customer.is_active ? '有効' : '退会' %></td>
       </tr>
       <% end %>
-      
+
       </tbody>
   </table>
-  <%= paginate @customers %>
+  <div style="margin-left: 400px;">
+    <%= paginate @customers %>
   </div>
   </div>
   </div>
-  
+  </div>
+
