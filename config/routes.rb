@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :items, only: [:new, :create, :index, :show, :edit, :update]
     root to: 'homes#top'
     patch 'order_details/:id' => 'order_details#update', as: 'order_details'
+    get 'orders/index/:id' => 'orders#index', as: 'orders_index'
   end
 
   scope module: :public do
