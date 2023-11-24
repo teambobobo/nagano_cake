@@ -4,13 +4,21 @@
 <!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
     <div class="col-md-4">
       <h3>商品詳細</h3>
+
+      <!--商品登録・更新成功のアラートメッセージ-->
+      <% if flash[:admin_item] %>
+        <div class="alert alert-success">
+          <%= flash[:admin_item] %>
+        </div>
+      <% end %>
+
       <div class="my-5">
         <%= image_tag @item.image, size: "300x200" %>
       </div>
     </div>
 
     <div class="col-md-8">
-      <table class="mt-5" style="border-spacing: 20px 20px; border-collapse: separate ;">
+      <table class="mt-5" style="border-spacing: 20px 20px; border-collapse: separate;">
         <tr>
           <td width="120">商品名</td>
           <td style="font-size: 25px;"><%= @item.name %></td>

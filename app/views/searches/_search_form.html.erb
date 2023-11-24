@@ -1,0 +1,20 @@
+<% if admin_signed_in? %>
+  <div class="search-form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word, size: "15" %>
+      <%= f.select :range, options_for_select([['会員'], ['商品']]) %>
+      <%= f.hidden_field :search, :value => "partial_match" %>
+      <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+<% else %>
+  <div class="search-form">
+    <%= form_with url: search_path, local: true, method: :get do |f| %>
+      <%= f.text_field :word, size: "15", placeholder: "商品名" %>
+      <%= f.hidden_field :range, :value => 'Item' %>
+      <%#= f.select :range, options_for_select([['Item'], ['Genre']]) %>
+      <%= f.hidden_field :search, :value => "partial_match" %>
+      <%= f.submit "検索", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+<% end %>
