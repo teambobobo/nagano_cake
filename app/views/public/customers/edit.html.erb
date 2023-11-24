@@ -1,12 +1,11 @@
-
-<div class="container mt-5">
+<div class="container py-5">
   <div class="row mx-auto">
-    <div class="col-md-3">
+    <div class="col-md-3 offset-2">
       <h5>会員情報編集</h5>
     </div>
   </div>
   <div class="row">
-    <div class="col-md">
+    <div class="col-md-8 mx-auto">
       <%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
       <table>
         <tbody>
@@ -26,7 +25,7 @@
           </tr>
           <tr>
             <td class="p-2">住所</td>
-            <td class="p-2"><%= f.text_field :address, size: "30"%></td>
+            <td class="p-2", colspan="2"><%= f.text_field :address, size: "45"%></td>
           </tr>
           <tr>
             <td class="p-2">電話番号</td>
