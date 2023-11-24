@@ -2,14 +2,30 @@
   <div class="row">
     <div class="col-md-10 mx-auto">
       <h3>配送先登録/一覧</h3>
-      <% if @address.errors.any? %>
 
-      <ul>
-       <% @address.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-       <% end %>
-      </ul>
-      <% end %>
+      <!--配送先登録失敗時のアラートメッセージ-->
+      <div class="col-md-4">
+        <% if @address.errors.any? %>
+          <div class="alert alert-danger" role="alert">
+            <% @address.errors.full_messages.each do |message| %>
+              <p><%= message %></p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+<%
+=begin
+%>
+<% if @address.errors.any? %>
+<ul>
+ <% @address.errors.full_messages.each do |message| %>
+ <li><%= message %></li>
+ <% end %>
+</ul>
+<% end %>
+<%
+=end
+%>
       <%= render 'form', address: @address%>
 
       <% if @addresses.exists? %>

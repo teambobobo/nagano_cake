@@ -12,7 +12,7 @@ class Public::AddressesController < ApplicationController
       flash[:public_address] ="登録できました"
       redirect_to addresses_path
     else
-      @addresses = Address.all
+      @addresses = current_customer.addresses.all
       render :index
     end
   end
