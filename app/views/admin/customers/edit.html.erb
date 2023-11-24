@@ -15,34 +15,38 @@
       <table>
         <tbody>
           <tr>
-            <td>氏名</td>
-            <td><%= f.text_field :last_name %></td>
-            <td><%= f.text_field :first_name %></td>
+            <td class="p-1">会員ID</td>
+            <td class="p-1"><%= @customer.id %></td>
           </tr>
           <tr>
-            <td>フリガナ</td>
-            <td><%= f.text_field :kana_last_name %></td>
-            <td><%= f.text_field :kana_first_name %></td>
+            <td class="p-1">氏名</td>
+            <td class="p-1"><%= f.text_field :last_name %></td>
+            <td class="p-1"><%= f.text_field :first_name %></td>
           </tr>
           <tr>
-            <td>郵便番号（ハイフンなし）</td>
-            <td><%= f.text_field :post_cord %></td>
+            <td class="p-1">フリガナ</td>
+            <td class="p-1"><%= f.text_field :kana_last_name %></td>
+            <td class="p-1"><%= f.text_field :kana_first_name %></td>
           </tr>
           <tr>
-            <td>住所</td>
-            <td><%= f.text_field :address %></td>
+            <td class="p-1">郵便番号<br>(ハイフンなし)</td>
+            <td class="p-1"><%= f.text_field :post_cord %></td>
           </tr>
           <tr>
-            <td>電話番号（ハイフンなし）</td>
-            <td><%= f.text_field :phone_number %></td>
+            <td class="p-1">住所</td>
+            <td class="p-1" colspan="3"><%= f.text_field :address,size: "55" %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
-            <td><%= f.text_field :email %></td>
+            <td class="p-1">電話番号<br>(ハイフンなし)</td>
+            <td class="p-1"><%= f.text_field :phone_number %></td>
           </tr>
           <tr>
-            <td>会員ステータス</td>
-            <td>
+            <td class="p-1">メールアドレス</td>
+            <td class="p-1"><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td class="p-1">会員ステータス</td>
+            <td class="p-1">
             <%= f.radio_button :is_active, true %>
 　          <%= f.label :is_active_true, "有効" %>
 　          <%= f.radio_button :is_active, false %>
@@ -50,7 +54,7 @@
 　          </td>
           </tr>
           <tr>
-            <td><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+            <td class="p-2"><%= f.submit "変更を保存", class:"btn btn-success" %></td>
           </tr>
         </tbody>
       </table>

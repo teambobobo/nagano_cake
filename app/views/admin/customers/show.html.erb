@@ -1,12 +1,12 @@
 <div class="container px-5 px-sm-0 py-5">
-  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+  <h3 class="text-center"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
   <% if flash[:admin_customer] %>
         <div class="alert alert-success">
           <%= flash[:admin_customer] %>
         </div>
         <% end %>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 offset-md-4">
       <p>会員ID</p>
       <p>氏名</p>
       <p>フリガナ</p>
@@ -16,7 +16,7 @@
       <p>メールアドレス</p>
       <p>会員ステータス</p>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-3">
       <p><%= @customer.id %></p>
       <p><%= @customer.last_name  %> <%= @customer.first_name %></p>
       <p><%= @customer.kana_last_name  %> <%= @customer.kana_first_name %></p>
@@ -25,9 +25,14 @@
       <p><%= @customer.phone_number %></p>
       <p><%= @customer.email %></p>
       <p class="<%= @customer.is_active ? 'text-success' : 'text-muted' %>"><%= @customer.is_active ? '有効' : '退会' %></p>
-      <%= link_to "編集する ", edit_admin_customer_path(@customer),class: "btn btn-sm btn-success"%>
-      <%= link_to "注文履歴一覧を見る ", orders_path,class: "btn btn-sm btn-info"%>
     </div>
-    
   </div>
-</div>  
+    <div class="row">
+      <div class="col text-center">
+        <%= link_to "編集する ", edit_admin_customer_path(@customer),class: "btn btn-sm btn-success"%>
+        <%= link_to "注文履歴一覧を見る ", orders_path,class: "btn btn-sm btn-primary ml-3"%>
+      </div>
+    </div>
+
+
+</div>

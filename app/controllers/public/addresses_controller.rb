@@ -3,7 +3,7 @@ class Public::AddressesController < ApplicationController
     @address=Address.new
     @addresses=Address.all
   end
-  
+
   def create
     @address=Address.new(address_params)
     @address.customer_id=current_customer.id
@@ -40,5 +40,11 @@ class Public::AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(:name, :post_cord, :address)
   end
-  
+    params.require(:address).permit(:name, :post_cord, :address)
+  end
+<<<<<<<<< saved version
+
+=========
+    params.require(:address).permit(:name, :post_cord, :address)
+>>>>>>>>> local version
 end
