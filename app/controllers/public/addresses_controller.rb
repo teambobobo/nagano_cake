@@ -43,5 +43,4 @@ class Public::AddressesController < ApplicationController
   def address_params
     params.require(:address).permit(:name, :post_cord, :address)
   end
-
 end
