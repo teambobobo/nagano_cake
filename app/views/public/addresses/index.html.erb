@@ -1,16 +1,21 @@
-<div class="container px-5 px-sm-0 ">
+<div class="container px-5 px-sm-0 py-5">
   <div class="row">
     <div class="col-md-8">
-      <% if flash[:public_address] %>
-        <div class="alert alert-success">
-          <%= flash[:public_address] %>
-        </div>
+      <h2>配送先登録/一覧</h2>
+      <% if @address.errors.any? %>
+      <%= @address.errors.count %>error prohibited this obj from being saved:
+      <ul>
+       <% @address.errors.full_messages.each do |message| %>
+       <li><%= message %></li>
+       <% end %>
+      </ul>
       <% end %>
       
-      <% if @address.errors.any? %>
-        <div class="alert alert-danger" role="alert">
-          <% @address.errors.full_messages.each do |message| %>
-            <p><%= message %></p>
+      <h2>配送先登録/一覧</h2>
+
+      
+      <%= render 'form', address: @address%>
+<<<<<<<<< saved version
           <% end %>
         </div>
       <% end %>
@@ -44,6 +49,30 @@
           <% end %>
         </table>
       </div>
+=========
+      <table class="table table-hover table-inverse">
+        <thead>
+           <tr>
+             <th>郵便番号</th>
+             <th>住所</th>
+             <th>宛名</th>
+             <th></th>
+           </tr>
+        </thead>
+        <% @addresses.each do |address| %>
+        <tbody>
+          <tr>
+            <td><%= address.post_cord %></td>
+            <td><%= address.address %></td>
+            <td><%= address.name %></td>
+            <td>
+              <%= link_to "編集する", edit_address_path(address.id),class: "btn btn-sm btn-success"%>
+              <%= link_to "削除する", address_path(address.id), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-sm btn-danger" %>
+            </td>
+          </tr>
+        </tbody>
+        <% end %>
+>>>>>>>>> local version
     </div>
   </div>
 </div>
