@@ -1,15 +1,19 @@
-<div class="container px-5 px-sm-0">
+<div class="container px-5 px-sm-0 py-5">
   <div class="row">
-    <div class="col-md-8">
-      <h1>配送先編集</h1>
-      <% if @address.errors.any? %>
-      <%= @address.errors.count %>error prohibited this obj from being saved:
-      <ul>
-       <% @address.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-       <% end %>
-      </ul>
+    <div class="col-md-8  mx-auto">
+       <% if @address.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @address.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
       <% end %>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-8  mx-auto">  
+      <h3>配送先編集</h3>
+      
       <%= render 'form', address: @address%> 
     </div>
   </div>

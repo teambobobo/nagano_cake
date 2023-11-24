@@ -1,41 +1,64 @@
-<div class="container px-5 px-sm-0">
-  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</h3>
-  <% if @customer.errors.any? %>
-      <%= @customer.errors.count %>error prohibited this obj from being saved:
-      <ul>
-       <% @customer.errors.full_messages.each do |message| %>
-       <li><%= message %></li>
-       <% end %>
-      </ul>
+<div class="container mt-5 py-5">
+  <div class="row mx-auto">
+    <div class="col-md-6 offset-3">
+      <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集　</h3>
+
+       <% if @customer.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @customer.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
       <% end %>
-  <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-    <div class="row">
-      <div class="col-md-3">
-        <p>会員ID</p>
-        <p><%= f.label :氏名 %></p>
-        <p><%= f.label :フリガナ %></p>
-        <p><%= f.label :郵便番号（ハイフンなし） %></p>
-        <p><%= f.label :住所 %></p>
-        <p><%= f.label :電話番号（ハイフンなし） %></p>
-        <p><%= f.label :メールアドレス %></p>
-      </div>
-      <div class="col-md-9">
-        <p><%= @customer.id %></p>  
-        <p><%= f.text_field :last_name %>  <%= f.text_field :first_name %></p>
-        <p><%= f.text_field :kana_last_name %>  <%= f.text_field :kana_first_name %></p>
-        <p><%= f.text_field :post_cord %></p>
-        <p><%= f.text_field :address %></p>
-        <p><%= f.text_field :phone_number %></p>
-        <p><%= f.email_field :email, autocomplete: "email" %></p>
-        <p>
-          <%= f.radio_button :is_active, true %>
-　        <%= f.label :is_active_true, "有効" %>
-　        <%= f.radio_button :is_active, false %>
-　        <%= f.label :is_active_false,"退会" %>
-　       </p>
-　       <%= f.submit "変更を保存",class: "btn btn-success" %>
-　     </div>
-    <% end %>
+
+<%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td class="p-1">会員ID</td>
+            <td class="p-1"><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <td class="p-1">氏名</td>
+            <td class="p-1"><%= f.text_field :last_name %></td>
+            <td class="p-1"><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td class="p-1">フリガナ</td>
+            <td class="p-1"><%= f.text_field :kana_last_name %></td>
+            <td class="p-1"><%= f.text_field :kana_first_name %></td>
+          </tr>
+          <tr>
+            <td class="p-1">郵便番号<br>(ハイフンなし)</td>
+            <td class="p-1"><%= f.text_field :post_cord %></td>
+          </tr>
+          <tr>
+            <td class="p-1">住所</td>
+            <td class="p-1" colspan="3"><%= f.text_field :address,size: "55" %></td>
+          </tr>
+          <tr>
+            <td class="p-1">電話番号<br>(ハイフンなし)</td>
+            <td class="p-1"><%= f.text_field :phone_number %></td>
+          </tr>
+          <tr>
+            <td class="p-1">メールアドレス</td>
+            <td class="p-1"><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td class="p-1">会員ステータス</td>
+            <td class="p-1">
+            <%= f.radio_button :is_active, true %>
+　          <%= f.label :is_active_true, "有効" %>
+　          <%= f.radio_button :is_active, false %>
+　          <%= f.label :is_active_false,"退会" %>
+　          </td>
+          </tr>
+          <tr>
+            <td class="p-2"><%= f.submit "変更を保存", class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+       <% end %>
     </div>
   </div>
-</div>  
+</div>

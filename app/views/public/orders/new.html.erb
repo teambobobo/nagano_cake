@@ -1,4 +1,4 @@
-<div class="container px-5 px-sm-0">
+<div class="container px-5 px-sm-0 py-5">
   <div class="row mt-3">
     <div class="col-md-8 offset-2">
 
@@ -27,15 +27,15 @@
         <table>
           <tr>
             <td>&emsp;&emsp;郵便番号(ハイフンなし)</td>
-            <td><%= f.text_field :post_code %></td>
+            <td><%= f.text_field :post_code, placeholder: "0000000" %></td>
           </tr>
           <tr>
             <td>&emsp;&emsp;住所</td>
-            <td><%= f.text_field :address, size: "50" %></td>
+            <td><%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", size: "50" %></td>
           </tr>
           <tr>
             <td>&emsp;&emsp;宛名</td>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name,placeholder: "令和道子" %></td>
           </tr>
         </table>
 
