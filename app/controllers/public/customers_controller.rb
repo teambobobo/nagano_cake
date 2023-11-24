@@ -13,8 +13,13 @@ class Public::CustomersController < ApplicationController
 
   def update
     customer = current_customer
-    customer.update(customer_params)
-    redirect_to customers_mypage_path
+    if customer.update(customer_params)
+      flash[:edit] = "登録情報変更に成功しました。"
+      redirect_to customers_mypage_path
+    else
+      flash[:edit] = "登録情報変更に失敗しました。"
+      redirect_to customers_mypage_path
+    end
   end
 
   def withdraw
