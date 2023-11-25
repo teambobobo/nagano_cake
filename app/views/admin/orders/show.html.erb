@@ -1,14 +1,14 @@
+<!--管理者側／注文履歴詳細画面-->
 <div class="container py-5">
   <div class="row">
     <div class="col-md-9">
       <h3>注文履歴詳細</h3>
-      <!--管理者側／注文履歴詳細画面-->
 
       <table style="border-spacing: 15px 15px; border-collapse: separate ;">
         <tr>
           <td><strong>購入者</strong></td>
           <td>
-            <%= link_to admin_customer_path(@order.customer.id) do %> <!--会員詳細画面-->
+            <%= link_to admin_customer_path(@order.customer.id) do %>
               <%= @order.customer.last_name + @order.customer.first_name %>
             <% end %>
           </td>
@@ -70,20 +70,21 @@
     </div>
 
     <div class="col-md-3" style="margin-top: auto;">
-      <table style="border-spacing: 15px 15px; border-collapse: separate; font-size: 19px;">
+      <table style="border-spacing: 10px 15px; border-collapse: separate; font-size: 19px;">
         <tr>
-          <td><strong>商品合計</strong></td>
-          <td><%= (@order.total_price - @postage).to_s(:delimited) %>円</td>
+          <td width="117"><strong>商品合計</strong></td>
+          <td style="word-break: break-all;"><%= (@order.total_price - @postage).to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <td><strong>送料</strong></td>
+          <td width="117"><strong>送料</strong></td>
           <td><%= @postage.to_s(:delimited) %>円</td>
         </tr>
         <tr>
-          <td><strong>請求金額合計</strong></td>
-          <td><strong><%= @order.total_price.to_s(:delimited) %>円</strong></td>
+          <td width="117"><strong>請求金額合計</strong></td>
+          <td style="word-break: break-all;"><strong><%= @order.total_price.to_s(:delimited) %>円</strong></td>
         </tr>
       </table>
     </div>
+
   </div>
 </div>

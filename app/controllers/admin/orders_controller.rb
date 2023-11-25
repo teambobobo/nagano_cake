@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
+
   def show
     @order = Order.find(params[:id])
     @postage = 800
@@ -14,11 +15,10 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path(@order.id)
   end
-  
+
   def index
     @customer = Customer.find(params[:id])
     @order = @customer.orders.page(params[:page]).per(10)
-    
   end
 
   private

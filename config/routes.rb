@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     patch 'order_details/:id' => 'order_details#update', as: 'order_details'
     get 'orders/index/:id' => 'orders#index', as: 'orders_index'
+    delete 'test_destroy/:id' => 'genres#destroy', as: 'test_destroy' #テスト用実装（1/3）
   end
 
   scope module: :public do

@@ -1,5 +1,8 @@
+<!--管理者側／会員詳細画面-->
 <div class="container px-5 px-sm-0 py-5">
   <h3 style="margin-left: 295px;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+
+  <!--会員情報更新成功のアラートメッセージ-->
   <div class="row">
     <div class="col-md-5 offset-md-3">
       <% if flash[:admin_customer] %>
@@ -9,6 +12,8 @@
       <% end %>
     </div>
   </div>
+
+  <!--会員詳細-->
   <div class="row">
     <div class="col-md-3 offset-md-3">
       <p>会員ID</p>
@@ -31,15 +36,16 @@
       <p class="<%= @customer.is_active ? 'text-success' : 'text-muted' %>"><%= @customer.is_active ? '有効' : '退会' %></p>
     </div>
   </div>
-    <div class="row">
-      <div class="col-md-5 offset-md-3">
-        <%= link_to "編集する ", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success"%>
-        <%= link_to "注文履歴一覧を見る ", admin_root_path, class: "btn btn-sm btn-primary ml-3"%>
-        <%= link_to admin_orders_index_path(@customer.id), class: "btn btn-sm btn-primary ml-3" do %>
-         <%= @customer.last_name + @customer.first_name %>様の注文履歴
-        <% end %>
-      </div>
-    </div>
 
+  <!--各ボタン-->
+  <div class="row">
+    <div class="col-md-5 offset-md-3">
+      <%= link_to "編集する ", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %>
+      <%= link_to "注文履歴一覧を見る ", admin_root_path, class: "btn btn-sm btn-primary ml-3" %>
+      <%= link_to admin_orders_index_path(@customer.id), class: "btn btn-sm btn-primary ml-3" do %>
+       <%= @customer.last_name + @customer.first_name %>様の注文履歴
+      <% end %>
+    </div>
+  </div>
 
 </div>

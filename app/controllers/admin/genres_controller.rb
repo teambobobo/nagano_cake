@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
+
   def index
     @genre = Genre.new
     @genres = Genre.all
@@ -26,6 +27,12 @@ class Admin::GenresController < ApplicationController
     flash[:genre] = "ジャンルを更新しました"
     redirect_to admin_genres_path
   end
+
+  def destroy #テスト用実装（2/3）
+    genre = Genre.find(params[:id])
+    genre.destroy
+    redirect_to admin_genres_path
+  end #テスト用実装（2/3）
 
   private
 

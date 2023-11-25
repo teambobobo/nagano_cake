@@ -1,4 +1,4 @@
-<!--会員ごとの注文一覧-->
+<!--管理者側／会員ごとの注文履歴画面-->
 <div class="container py-5">
   <div class="row">
     <div class="col-12 mt-3">
@@ -19,7 +19,7 @@
             <td><%=link_to order.created_at.strftime("%Y/%m/%d %H:%M:%S"),admin_order_path(order.id)  %></td>
             <td>
               <% order.order_details.each do |order_details| %>
-                <% @total_amount += order_details.amount  %>
+                <% @total_amount += order_details.amount %>
               <% end %>
               <%= @total_amount %>
             </td>
@@ -36,5 +36,8 @@
   </div>
 </div>
 
-<div class="center-block text-center"><%= paginate @order %></div>
+<!--ページネーション-->
+<div class="center-block text-center">
+  <%= paginate @order %>
+</div>
 

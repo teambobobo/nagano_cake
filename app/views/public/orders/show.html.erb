@@ -1,3 +1,4 @@
+<!--顧客側／注文履歴詳細画面-->
 <div class="container py-5">
   <h3>注文詳細履歴</h3>
 
@@ -5,25 +6,25 @@
     <div class="col-md-7">
       <strong>注文情報</strong>
       <table class="table-bordered my-2", style="border: solid 2px black;">
-          <tr height="50">
-            <td class="table-active">注文日</td>
-            <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
-          </tr>
-          <tr height="50">
-            <td width="125" class="table-active">配送先</td>
-            <td width="500">
-             〒<%= @order.post_code %><br>
-              <%= @order.address %><br>
-              <%= @order.address_name %>
-            </td>
-          </tr>
-           <tr height="50">
-            <td class="table-active">支払方法</td>
-            <td><%= @order.payment_method_i18n %></td>
-          </tr>
-           <tr height="50">
-            <td class="table-active">ステータス</td>
-            <td><%= @order.status_i18n %></td>
+        <tr height="50">
+          <td class="table-active">注文日</td>
+          <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        </tr>
+        <tr height="50">
+          <td width="125" class="table-active">配送先</td>
+          <td width="500">
+            〒<%= @order.post_code %><br>
+            <%= @order.address %><br>
+            <%= @order.address_name %>
+          </td>
+        </tr>
+        <tr height="50">
+          <td class="table-active">支払方法</td>
+          <td><%= @order.payment_method_i18n %></td>
+        </tr>
+        <tr height="50">
+          <td class="table-active">ステータス</td>
+          <td><%= @order.status_i18n %></td>
         </tr>
       </table>
     </div>

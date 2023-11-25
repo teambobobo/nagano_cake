@@ -1,13 +1,14 @@
+<!--顧客側／商品一覧画面-->
 <div class='container-fluid py-5'>
   <div class='row'>
+
+    <!--ジャンル検索機能-->
     <div class="col-md-2 offset-md-1">
       <%= render "searches/genre_search", genres: @genres %>
     </div>
-    <div class="col-md-8">
-<!--顧客側／商品一覧画面-->
-<!--ここでのafter_taxはItemモデルに定義したメソッドのこと-->
-    <h3>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h3>
 
+    <div class="col-md-8">
+      <h3>商品一覧（全<%= Item.where(is_sale: true).all.count %>件）</h3>
       <div class='row row-cols-4'>
         <% @items.each do |item| %>
         <div class="item">
@@ -19,6 +20,8 @@
         </div>
         <% end %>
       </div>
+
+      <!--ページネーション-->
       <%= paginate @items %>
     </div>
   </div>
