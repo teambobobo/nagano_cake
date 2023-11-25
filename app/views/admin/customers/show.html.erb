@@ -32,9 +32,12 @@
     </div>
   </div>
     <div class="row">
-      <div class="col-md-3 offset-md-4">
-        <%= link_to "編集する ", edit_admin_customer_path(@customer),class: "btn btn-sm btn-success"%>
-        <%= link_to "注文履歴一覧を見る ", admin_root_path,class: "btn btn-sm btn-primary ml-3"%>
+      <div class="col-md-5 offset-md-3">
+        <%= link_to "編集する ", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success"%>
+        <%= link_to "注文履歴一覧を見る ", admin_root_path, class: "btn btn-sm btn-primary ml-3"%>
+        <%= link_to admin_orders_index_path(@customer.id), class: "btn btn-sm btn-primary ml-3" do %>
+         <%= @customer.last_name + @customer.first_name %>様の注文履歴
+        <% end %>
       </div>
     </div>
 

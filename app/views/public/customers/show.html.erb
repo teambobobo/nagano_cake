@@ -6,6 +6,12 @@
         <%= flash[:edit] %>
       </div>
       <% end %>
+
+      <% if flash[:edit_danger] %>
+      <div class="alert alert-danger">
+        <%= flash[:edit_danger] %>
+      </div>
+      <% end %>
       <h5>マイページ</h5>
     </div>
   </div>

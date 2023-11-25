@@ -17,7 +17,7 @@ class Public::CustomersController < ApplicationController
       flash[:edit] = "登録情報変更に成功しました。"
       redirect_to customers_mypage_path
     else
-      flash[:edit] = "登録情報変更に失敗しました。"
+      flash[:edit_danger] = "登録情報変更に失敗しました。"
       redirect_to customers_mypage_path
     end
   end

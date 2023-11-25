@@ -12,6 +12,12 @@
             <% end %>
           </div>
         <% end %>
+        <!--配送先更新成功のアラートメッセージ-->
+        <% if flash[:public_address] %>
+        <div class="alert alert-success">
+          <%= flash[:public_address] %>
+        </div>
+      <% end %>
       </div>
 <%
 =begin
