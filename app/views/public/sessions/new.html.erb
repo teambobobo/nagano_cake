@@ -1,5 +1,13 @@
 <div class="container py-5", style="margin-left: 230px;">
   <div class="row">
+    <div class="col-md-7" style="margin-left: 150px;">
+      <%#= render 'public/shared/error_messages', resource: resource %>
+      <% flash.each do |type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}") %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-9 mx-auto">
       <h5 class="p-2">ログイン</h5>
       <h6 class="p-3">会員の方はこちらからログイン</h6>

@@ -8,7 +8,7 @@
         <tr>
           <td><strong>購入者</strong></td>
           <td>
-            <%= link_to admin_orders_index_path(@order.customer.id) do %>
+            <%= link_to admin_customer_path(@order.customer.id) do %> <!--会員詳細画面-->
               <%= @order.customer.last_name + @order.customer.first_name %>
             <% end %>
           </td>

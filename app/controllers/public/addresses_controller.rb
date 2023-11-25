@@ -2,7 +2,7 @@ class Public::AddressesController < ApplicationController
   before_action :authenticate_customer!
   def index
     @address=Address.new
-    @addresses=Address.all
+    @addresses=current_customer.addresses.all
   end
 
   def create
@@ -12,7 +12,7 @@ class Public::AddressesController < ApplicationController
       flash[:public_address] ="登録できました"
       redirect_to addresses_path
     else
-      @addresses = Address.all
+      @addresses = current_customer.addresses.all
       render :index
     end
   end

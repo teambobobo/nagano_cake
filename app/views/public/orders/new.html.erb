@@ -13,17 +13,17 @@
         <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
 
         <h5><strong>お届け先</strong></h5>
-        &emsp;<%= f.radio_button :address_option, 1 %>
-        <%= f.label :address_option, "ご自身の住所" %><br>
+        &emsp;<%= f.radio_button :address_option, 1, id: "address_option_customer" %>
+        <%= f.label :address_option_customer, "ご自身の住所", for: "address_option_customer" %><br>
         &emsp;&emsp;<%= '〒' + current_customer.post_cord + ' ' + current_customer.address %> <br>
         &emsp;&emsp;<%= current_customer.last_name + current_customer.first_name %>
         <br>
-        &emsp;<%= f.radio_button :address_option, 2 %>
-        <%= f.label :address_option, "登録済み住所から選択" %><br>
-        &emsp;&emsp;<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+        &emsp;<%= f.radio_button :address_option, 2, id: "address_option_ship" %>
+        <%= f.label :address_option_ship, "登録済み住所から選択", for: "address_option_ship" %><br>
+        &emsp;&emsp;<%= f.select :address_id, options_from_collection_for_select(current_customer.addresses.all, :id, :address_display) %>
         <br>
-        &emsp;<%= f.radio_button :address_option, 3 %>
-        <%= f.label :address_option, "新しいお届け先" %>
+        &emsp;<%= f.radio_button :address_option, 3, id: "address_option_new" %>
+        <%= f.label :address_option_new, "新しいお届け先", for: "address_option_new" %>
         <table>
           <tr>
             <td>&emsp;&emsp;郵便番号(ハイフンなし)</td>

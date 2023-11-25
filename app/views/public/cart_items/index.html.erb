@@ -27,7 +27,7 @@
             <td class="pt-4"><%= cart_item.item.after_tax.to_s(:delimited) %></td>
             <td style="text-align:center; padding-top:17px ;">
               <%= form_with model: CartItem, url: cart_item_path(cart_item), method: :patch do |f| %>
-                <%= f.number_field :amount, value: cart_item.amount, min:1, max:100 %>
+                <%= f.number_field :amount, value: cart_item.amount, min:1, style: "width: 80px;" %>
                 <%= f.submit "変更", class: "btn btn-success" %>
               <% end %>
             </td>

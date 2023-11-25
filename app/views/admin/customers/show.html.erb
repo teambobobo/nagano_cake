@@ -1,12 +1,16 @@
 <div class="container px-5 px-sm-0 py-5">
-  <h3 class="text-center"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
-  <% if flash[:admin_customer] %>
+  <h3 style="margin-left: 295px;"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+  <div class="row">
+    <div class="col-md-5 offset-md-3">
+      <% if flash[:admin_customer] %>
         <div class="alert alert-success">
           <%= flash[:admin_customer] %>
         </div>
-        <% end %>
+      <% end %>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-md-3 offset-md-4">
+    <div class="col-md-3 offset-md-3">
       <p>会員ID</p>
       <p>氏名</p>
       <p>フリガナ</p>
@@ -28,9 +32,12 @@
     </div>
   </div>
     <div class="row">
-      <div class="col text-center">
-        <%= link_to "編集する ", edit_admin_customer_path(@customer),class: "btn btn-sm btn-success"%>
-        <%= link_to "注文履歴一覧を見る ", admin_root_path,class: "btn btn-sm btn-primary ml-3"%>
+      <div class="col-md-5 offset-md-3">
+        <%= link_to "編集する ", edit_admin_customer_path(@customer), class: "btn btn-sm btn-success"%>
+        <%= link_to "注文履歴一覧を見る ", admin_root_path, class: "btn btn-sm btn-primary ml-3"%>
+        <%= link_to admin_orders_index_path(@customer.id), class: "btn btn-sm btn-primary ml-3" do %>
+         <%= @customer.last_name + @customer.first_name %>様の注文履歴
+        <% end %>
       </div>
     </div>
 
