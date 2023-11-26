@@ -43,9 +43,6 @@
           <tr>
             <td><%= genre.name %></td>
             <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
-            <td><!-- #テスト用実装（3/3）-->
-              <%= link_to "削除する", admin_test_destroy_path(genre.id), method: :delete, "data-confirm" => "本当に削除しますか？",class: "btn btn-danger" %>
-            </td><!-- #テスト用実装（3/3）-->
           </tr>
           <% end %>
         </tbody>

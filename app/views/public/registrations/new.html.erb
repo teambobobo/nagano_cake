@@ -10,6 +10,12 @@
   <%= form_with model: @customer, url: customer_registration_path do |f| %>
   <!--新規会員登録失敗時のエラーメッセージ-->
     <%= render "public/shared/error_messages", resource: resource %>
+    <!--退会した会員がログインしようとしたときのアラートメッセージ-->
+    <% if flash[:withdraw] %>
+      <div class="alert alert-danger">
+        <%= flash[:withdraw] %>
+      </div>
+    <% end %>
     <table>
       <tbody>
         <tr>

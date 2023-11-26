@@ -1,14 +1,14 @@
 <!--顧客側／会員情報編集画面-->
 <div class="container py-5">
   <div class="row mx-auto">
-    <div class="col-md-3 offset-2">
+    <div class="col-md-3 offset-md-1">
       <h5>会員情報編集</h5>
     </div>
   </div>
 
   <!--会員情報編集フォーム-->
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-9 mx-auto">
       <%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
       <table>
         <tbody>

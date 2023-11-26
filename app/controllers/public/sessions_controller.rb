@@ -34,6 +34,7 @@ class Public::SessionsController < Devise::SessionsController
     if customer.is_active
       return unless customer.valid_password?(params[:customer][:password])
     else
+      flash[:withdraw] = "退会済みのため、新規登録をお願い致します"
       redirect_to new_customer_registration_path
     end
   end

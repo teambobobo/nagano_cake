@@ -28,12 +28,6 @@ class Admin::GenresController < ApplicationController
     redirect_to admin_genres_path
   end
 
-  def destroy #テスト用実装（2/3）
-    genre = Genre.find(params[:id])
-    genre.destroy
-    redirect_to admin_genres_path
-  end #テスト用実装（2/3）
-
   private
 
   def genre_params
