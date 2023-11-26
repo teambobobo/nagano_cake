@@ -1,10 +1,11 @@
+<!--顧客側／配送先登録・一覧画面-->
 <div class="container px-5 px-sm-0 py-5">
   <div class="row">
     <div class="col-md-10 mx-auto">
       <h3>配送先登録/一覧</h3>
-
-      <!--配送先登録失敗時のアラートメッセージ-->
       <div class="col-md-4">
+
+        <!--配送先登録失敗時のエラーメッセージ-->
         <% if @address.errors.any? %>
           <div class="alert alert-danger" role="alert">
             <% @address.errors.full_messages.each do |message| %>
@@ -12,28 +13,20 @@
             <% end %>
           </div>
         <% end %>
-        <!--配送先更新成功のアラートメッセージ-->
-        <% if flash[:public_address] %>
-        <div class="alert alert-success">
-          <%= flash[:public_address] %>
-        </div>
-      <% end %>
-      </div>
-<%
-=begin
-%>
-<% if @address.errors.any? %>
-<ul>
- <% @address.errors.full_messages.each do |message| %>
- <li><%= message %></li>
- <% end %>
-</ul>
-<% end %>
-<%
-=end
-%>
-      <%= render 'form', address: @address%>
 
+        <!--配送先登録成功・削除成功時のアラートメッセージ-->
+        <% flash.each do |type, message| %>
+         <%= content_tag(:div, message, class: "alert alert-#{type == 'public_address' ? 'success' : 'danger'}") %>
+        <% end %>
+        <!--content_tagメソッドによってmessageをdiv要素で囲んでいる。-->
+        <!--typeがpublic_addressならclassがalert-successとなり、それ以外の場合はalert-dangerになる。-->
+
+      </div>
+
+      <!--配送先登録フォーム-->
+      <%= render 'form', address: @address %>
+
+      <!--配送先一覧-->
       <% if @addresses.exists? %>
         <div class="mt-3">
           <table class="table table-hover table-inverse table-bordered" style="border: solid 2px black;">
@@ -65,6 +58,7 @@
           <h5><strong>登録している配送先はありません。</strong></h5>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>

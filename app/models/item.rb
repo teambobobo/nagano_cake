@@ -24,6 +24,7 @@ class Item < ApplicationRecord
     (self.before_tax * 1.10).round
   end
 
+# 検索機能のためのメソッド
   def self.looks(search, word)
     if search == "partial_match"
       @item = Item.where("name LIKE?", "%#{word}%")

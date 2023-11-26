@@ -1,18 +1,23 @@
+<!--顧客側／ログイン画面-->
 <div class="container py-5", style="margin-left: 230px;">
   <div class="row">
     <div class="col-md-7" style="margin-left: 150px;">
       <%#= render 'public/shared/error_messages', resource: resource %>
+      <!--ログイン失敗時・ログアウト成功時のアラートメッセージ-->
       <% flash.each do |type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{type == 'notice' ? 'success' : 'danger'}") %>
       <% end %>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-9 mx-auto">
       <h5 class="p-2">ログイン</h5>
       <h6 class="p-3">会員の方はこちらからログイン</h6>
     </div>
   </div>
+
+  <!--ログインフォーム-->
   <div class="row">
     <div class="col-md-6 mx-auto">
       <%= form_with model: @customer, url: customer_session_path do |f| %>
@@ -33,6 +38,7 @@
       <% end %>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-9 mx-auto">
       <h6 class="p-3">会員登録がお済みでない方</h6>

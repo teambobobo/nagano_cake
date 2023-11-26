@@ -16,11 +16,17 @@ class Public::OrdersController < ApplicationController
       @order.post_code = current_customer.post_cord
       @order.address = current_customer.address
     elsif @address_option == "2"
-      @order.address_name = Address.find(params[:order][:address_id]).name
-      @order.post_code = Address.find(params[:order][:address_id]).post_cord
-      @order.address = Address.find(params[:order][:address_id]).address
+      if params[:order][:address_id]
+        @order.address_name = Address.find(params[:order][:address_id]).name
+        @order.post_code = Address.find(params[:order][:address_id]).post_cord
+        @order.address = Address.find(params[:order][:address_id]).address
+      else
+        flash[:public_order] = "お届け先を選択または入力してください"
+        render :new
+      end
     else
       if params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:address_name] == ""
+        flash[:public_order] = "お届け先を選択または入力してください"
         render :new
       else
         @order.address_name = params[:order][:name]
@@ -38,14 +44,14 @@ class Public::OrdersController < ApplicationController
     #ordersに書かれているものを入れていく（客の情報を入れていく）
     #@order.saveしても問題ない
     if @order.save
-      cart_items = current_customer.cart_items.all#一個ずつ取り出したい
+      cart_items = current_customer.cart_items.all #一個ずつ取り出したい
     #繰り返しの構文を書く
       cart_items.each do |cart_item|
     #保存用のかご記入
         @order_details = OrderDetail.new
     #order_detailsに書かれているものをカゴに入れていく
-        @order_details.item_id = cart_item.item.id#何の商品なのか判断
-        @order_details.amount = cart_item.amount#何個注文したか
+        @order_details.item_id = cart_item.item.id #何の商品なのか判断
+        @order_details.amount = cart_item.amount #何個注文したか
         @order_details.order_id = @order.id
         #@order_details.status = cart_item.status
         @order_details.after_tax = cart_item.item.after_tax
@@ -88,3 +94,18 @@ class Public::OrdersController < ApplicationController
 
 
 end
+
+
+
+=begin
+%>
+# もともとのcheckアクション
+
+elsif @address_option == "2"
+  @order.address_name = Address.find(params[:order][:address_id]).name
+  @order.post_code = Address.find(params[:order][:address_id]).post_cord
+  @order.address = Address.find(params[:order][:address_id]).address
+else
+
+<%
+=end

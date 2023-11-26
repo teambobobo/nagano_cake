@@ -1,11 +1,12 @@
+<!--会員名・商品名の検索結果画面-->
 <div class='container-fluid py-5'>
   <div class='row'>
     <div class="col-md-8 mx-auto">
 
+      <!--検索対象モデルが会員（Customer）の時 -->
       <% if @range == "会員" %>
         <table class="table table-hover table-inverse">
-        <!--検索対象モデルがCustomerの時 -->
-          <h3>「<%= @word %>」様の検索結果（全<%= Customer.looks(params[:search], params[:word]).count %>名）</h3>
+          <h3>「<%= @word %>」さんの検索結果（全<%= Customer.looks(params[:search], params[:word]).count %>名）</h3>
           <thead class="table-active">
             <tr>
               <th>会員ID</th>
@@ -13,7 +14,6 @@
               <th>ステータス</th>
             </tr>
           </thead>
-
           <tbody>
           <% @customers.each do |customer| %>
             <tr>
@@ -28,11 +28,12 @@
           <% end %>
           </tbody>
         </table>
+        <!--ページネーション-->
         <%= paginate @customers %>
-      <% else %>
-        <!--検索対象モデルがCustomerではない時(= 検索対象モデルがItemの時) -->
-        <h3>商品名「<%= @word %>」の検索結果（全<%= Item.looks(params[:search], params[:word]).where(is_sale: true).count %>件）</h3>
 
+      <% else %>
+        <!--検索対象モデルが会員ではない時(= 商品（Item）の時) -->
+        <h3>商品名「<%= @word %>」の検索結果（全<%= Item.looks(params[:search], params[:word]).where(is_sale: true).count %>件）</h3>
         <div class='row row-cols-4'>
           <% @items.each do |item| %>
           <div class="item">
@@ -44,11 +45,9 @@
           </div>
           <% end %>
         </div>
+        <!--ページネーション-->
         <%= paginate @items %>
-
       <% end %>
     </div>
   </div>
 </div>
-
-

@@ -1,12 +1,14 @@
+<!--顧客側／会員詳細画面（マイページ）-->
 <div class="container py-5">
   <div class="row">
     <div class="col-md p-2">
+      <!--会員情報更新成功時のアラートメッセージ-->
       <% if flash[:edit] %>
       <div class="alert alert-success">
         <%= flash[:edit] %>
       </div>
       <% end %>
-
+      <!--会員情報更新失敗時のアラートメッセージ-->
       <% if flash[:edit_danger] %>
       <div class="alert alert-danger">
         <%= flash[:edit_danger] %>
@@ -15,6 +17,7 @@
       <h5>マイページ</h5>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md p-2">
       <table>
@@ -25,6 +28,7 @@
       </table>
     </div>
   </div>
+
   <div class="row">
     <div class="col-md-8 p-2">
       <table class="table table-bordered", style="border: solid 2px black;">
@@ -58,16 +62,16 @@
     </div>
   </div>
 
-      <table>
-        <tr>
-          <th class=p-2>配送先</th>
-          <td class=p-2><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></td>
-        </tr>
-        <tr>
-          <th class=p-2>注文履歴</th>
-          <td class=p-2><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
-        </tr>
-      </table>
+  <table>
+    <tr>
+      <th class=p-2>配送先</th>
+      <td class=p-2><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></td>
+    </tr>
+    <tr>
+      <th class=p-2>注文履歴</th>
+      <td class=p-2><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
+    </tr>
+  </table>
 </div>
 
 

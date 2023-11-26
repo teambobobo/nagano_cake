@@ -1,8 +1,18 @@
+<!--顧客側／注文情報入力画面-->
 <div class="container px-5 px-sm-0 py-5">
   <div class="row mt-3">
     <div class="col-md-8 offset-2">
 
+      <!--注文情報入力フォーム-->
       <h3 class="mb-3">注文情報入力</h3>
+
+      <!--注文情報入力失敗時のアラートメッセージ-->
+      <% if flash[:public_order] %>
+        <div class="alert alert-danger">
+          <%= flash[:public_order] %>
+        </div>
+      <% end %>
+
       <%= form_with model: @order, url: orders_check_path, method: :post do |f| %>
 
         <h5><strong>支払方法</strong></h5>
@@ -24,6 +34,7 @@
         <br>
         &emsp;<%= f.radio_button :address_option, 3, id: "address_option_new" %>
         <%= f.label :address_option_new, "新しいお届け先", for: "address_option_new" %>
+
         <table>
           <tr>
             <td>&emsp;&emsp;郵便番号(ハイフンなし)</td>
