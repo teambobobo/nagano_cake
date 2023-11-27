@@ -1,0 +1,29 @@
+<!--ジャンル検索結果画面-->
+<div class='container-fluid py-5'>
+  <div class='row'>
+
+    <!--ジャンル検索機能-->
+    <div class="col-md-2 offset-md-1">
+      <%= render 'searches/genre_search', genres: @genres %>
+    </div>
+
+    <!--ジャンル検索結果一覧-->
+    <div class="col-md-8">
+      <h3><%= @genre.name %>一覧（全<%= Item.where(genre_id: @genre_id, is_sale: true).count %>件）</h3>
+      <div class='row row-cols-4'>
+        <% @items.each do |item| %>
+        <div class="item">
+          <%= link_to item_path(item.id) do%>
+            <%= image_tag item.image, size: "200x140" %>
+          <% end %>
+          <p style="width:80%;"><%= link_to item.name.truncate(20), item_path(item.id) %></p>
+          <p>￥<%= item.after_tax.to_s(:delimited) %></p>
+        </div>
+        <% end %>
+      </div>
+
+      <!--ページネーション-->
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>

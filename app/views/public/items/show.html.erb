@@ -1,0 +1,40 @@
+<!--顧客側／商品詳細画面-->
+<div class='container-fluid py-5'>
+  <div class='row' >
+
+    <!--ジャンル検索機能-->
+    <div class="col-md-2 offset-md-1">
+      <%= render 'searches/genre_search', genres: @genres %>
+    </div>
+
+    <!--商品画像-->
+    <div class="col-md-1">
+      <div>
+        <%= image_tag @item.image, size: "360x240" %>
+      </div>
+    </div>
+
+    <!--商品詳細-->
+    <div class="col-md-4 offset-md-2" >
+      <h4 style="letter-spacing: 1px">
+        <strong><%= @item.name %></strong>
+      </h4>
+      <p style="font-size: 19px; margin-top: 10px;">
+        <%= @item.introduction %>
+      </p>
+      <p>
+        <strong style="font-size: 25px;">
+          ￥<%= @item.after_tax.to_s(:delimited) %>
+        </strong>
+        （税込）
+      </p>
+
+      <!--個数選択フォーム・カートに入れるボタン-->
+      <%= form_with model: CartItem, url: cart_items_path, method: :post, html: { class: "form-inline" } do |f| %>
+        <%= f.select :amount, *[1..100], {}, class: "form-control mr-5" %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<!--顧客側／会員情報編集画面-->
+<div class="container py-5">
+  <div class="row mx-auto">
+    <div class="col-md-3 offset-md-1">
+      <h5>会員情報編集</h5>
+    </div>
+  </div>
+
+  <!--会員情報編集フォーム-->
+  <div class="row">
+    <div class="col-md-9 mx-auto">
+      <%= form_with model: @customer, url: customers_mypage_path, method: :patch do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <td class="p-2">氏名</td>
+            <td class="p-2"><%= f.text_field :last_name %></td>
+            <td class="p-2"><%= f.text_field :first_name %></td>
+          </tr>
+          <tr>
+            <td class="p-2">フリガナ</td>
+            <td class="p-2"><%= f.text_field :kana_last_name %></td>
+            <td class="p-2"><%= f.text_field :kana_first_name %></td>
+          </tr>
+          <tr>
+            <td class="p-2">郵便番号</td>
+            <td class="p-2"><%= f.text_field :post_cord %></td>
+          </tr>
+          <tr>
+            <td class="p-2">住所</td>
+            <td class="p-2", colspan="2"><%= f.text_field :address, size: "45"%></td>
+          </tr>
+          <tr>
+            <td class="p-2">電話番号</td>
+            <td class="p-2"><%= f.text_field :phone_number %></td>
+          </tr>
+          <tr>
+            <td class="p-2">メールアドレス</td>
+            <td class="p-2"><%= f.text_field :email %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td class="p-2"><%= f.submit "編集内容を保存", class:"btn btn-success" %></td>
+            <td></td>
+            <td class="p-2"><%= link_to "退会する", customers_check_path, class:"btn btn-danger" %></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

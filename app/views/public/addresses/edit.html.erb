@@ -1,0 +1,25 @@
+<!--顧客側／配送先編集画面-->
+<div class="container px-5 px-sm-0 py-5">
+
+  <!--配送先更新失敗時のエラーメッセージ-->
+  <div class="row">
+    <div class="col-md-8  mx-auto">
+      <% if @address.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <% @address.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!--配送先編集フォーム-->
+  <div class="row">
+    <div class="col-md-8  mx-auto">
+      <h3>配送先編集</h3>
+      <%= render 'form', address: @address%>
+    </div>
+  </div>
+
+</div>

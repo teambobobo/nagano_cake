@@ -1,0 +1,53 @@
+<!--会員名・商品名の検索結果画面-->
+<div class='container-fluid py-5'>
+  <div class='row'>
+    <div class="col-md-8 mx-auto">
+
+      <!--検索対象モデルが会員（Customer）の時 -->
+      <% if @range == "会員" %>
+        <table class="table table-hover table-inverse">
+          <h3>「<%= @word %>」さんの検索結果（全<%= Customer.looks(params[:search], params[:word]).count %>名）</h3>
+          <thead class="table-active">
+            <tr>
+              <th>会員ID</th>
+              <th>会員名</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td>
+                <%= link_to admin_customer_path(customer.id) do %>
+                  <%= customer.last_name + customer.first_name %>
+                <% end %>
+              </td>
+              <td class="<%= customer.is_active ? 'text-success' : 'text-muted' %>"><strong><%= customer.is_active ? '有効' : '退会' %></strong></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <!--ページネーション-->
+        <%= paginate @customers %>
+
+      <% else %>
+        <!--検索対象モデルが会員ではない時(= 商品（Item）の時) -->
+        <h3>商品名「<%= @word %>」の検索結果（全<%= Item.looks(params[:search], params[:word]).where(is_sale: true).count %>件）</h3>
+        <div class='row row-cols-4'>
+          <% @items.each do |item| %>
+          <div class="item">
+            <%= link_to item_path(item.id) do%>
+              <%= image_tag item.image, size: "200x140" %>
+            <% end %>
+            <p style="width:80%;"><%= link_to item.name.truncate(20), item_path(item.id) %></p>
+            <p>￥<%= item.after_tax.to_s(:delimited) %></p>
+          </div>
+          <% end %>
+        </div>
+        <!--ページネーション-->
+        <%= paginate @items %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,4 +3,25 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :cart_items, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :addresses, dependent: :destroy
+
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :phone_number, presence: true
+  validates :post_cord, presence: true
+  validates :address, presence: true
+
+  def active_for_authentication?
+    super && (is_active == true)
+  end
+
+  def self.looks(search, word)
+    if search == "partial_match"
+      @customer = Customer.where("first_name LIKE? OR last_name LIKE?", "%#{word}%", "%#{word}%")
+    end
+  end
 end

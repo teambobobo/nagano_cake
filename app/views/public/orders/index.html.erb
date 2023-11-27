@@ -1,0 +1,48 @@
+<!--顧客側／注文履歴一覧画面-->
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <h3 class="mb-4">注文履歴一覧</h3>
+      <% if @order.exists? %>
+        <table class="table-bordered", style="border: solid 2px black;">
+          <thead height="50" class="table-active">
+            <tr>
+              <th width="300">注文日</th>
+              <th width="900">配送先</th>
+              <th width="400">注文商品</th>
+              <th width="150">支払金額</th>
+              <th width="200">ステータス</th>
+              <th width="200">注文詳細</th>
+            </tr>
+          </thead>
+          <% @order.each do |order| %>
+            <tbody height="50">
+              <tr>
+                <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+                <td>
+                  〒<%= order.post_code %><br>
+                  <%= order.address %><br>
+                  <%= order.address_name %>
+                </td>
+                <td>
+                  <% order.order_details.each do |order_details| %>
+                    <%= order_details.item.name %><br>
+                  <% end %>
+                </td>
+                <td>
+                  <%= order.total_price.to_s(:delimited) %>円
+                </td>
+                <td><%= order.status_i18n %></td>
+                <td style="text-align:center;"><%= link_to "表示する", order_path(order.id), class:"btn btn-primary" %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      <% else %>
+        <div class="d-flex align-items-center justify-content-center", style="height:250px; margin-left: 50px;">
+          <h5><strong>注文履歴はありません。</strong></h5>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

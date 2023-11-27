@@ -1,0 +1,78 @@
+<!--顧客側／会員詳細画面（マイページ）-->
+<div class="container py-5">
+  <div class="row">
+    <div class="col-md p-2">
+      <!--会員情報更新成功時のアラートメッセージ-->
+      <% if flash[:edit] %>
+      <div class="alert alert-success">
+        <%= flash[:edit] %>
+      </div>
+      <% end %>
+      <!--会員情報更新失敗時のアラートメッセージ-->
+      <% if flash[:edit_danger] %>
+      <div class="alert alert-danger">
+        <%= flash[:edit_danger] %>
+      </div>
+      <% end %>
+      <h5>マイページ</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md p-2">
+      <table>
+        <tr>
+          <th class=p-2>登録情報</th>
+          <td class=p-2><%= link_to "編集する", customers_mypage_edit_path, class:"btn btn-success" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 p-2">
+      <table class="table table-bordered", style="border: solid 2px black;">
+        <tbody>
+          <tr>
+            <td width="200">氏名</td>
+            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td width="200">カナ</td>
+            <td><%= @customer.kana_last_name %> <%= @customer.kana_first_name %></td>
+          </tr>
+          <tr>
+            <td width="200">郵便番号</td>
+            <td><%= @customer.post_cord %></td>
+          </tr>
+          <tr>
+            <td width="200">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td width="200">電話番号</td>
+            <td><%= @customer.phone_number %></td>
+          </tr>
+          <tr>
+            <td width="200">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th class=p-2>配送先</th>
+      <td class=p-2><%= link_to "一覧を見る", addresses_path, class: "btn btn-primary" %></td>
+    </tr>
+    <tr>
+      <th class=p-2>注文履歴</th>
+      <td class=p-2><%= link_to "一覧を見る", orders_path, class: "btn btn-primary" %></td>
+    </tr>
+  </table>
+</div>
+
+
+
